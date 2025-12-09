@@ -1,11 +1,31 @@
 <?php
+  require 'functions.php';
 
-$name = 'Beto'; // string
-$quantity = 14; // integer
-$price = 9.99; // float
-$paymentStatus = false; // bool
-$startDate = null; // NULL
+  $greeting = 'Hola mundo';
 
-var_dump($startDate);
+  $tasks = [
+    [
+      'title' => 'Estudiar PHP',
+      'completed' => true
+    ],
+    [
+      'title' => 'Estudiar JS',
+      'completed' => false
+    ],
+    [
+      'title' => 'Estudiar Node',
+      'completed' => false
+    ]
+  ];
 
-// echo "Hola {$name}";
+  $completedTasks = array_filter($tasks, function ($task) {
+    return $task['completed'];
+  });
+
+  $pendingTasks = array_filter($tasks, function ($task) {
+    return !$task['completed'];
+  });
+
+  dd($pendingTasks);
+
+  require 'index.view.php';
