@@ -1,8 +1,4 @@
 <?php
-require 'funciones.php';
-
-$greeting = "Hola mundo";
-
 $tasks = [
     [
         'title' => 'Estudiar PHP',
@@ -26,6 +22,14 @@ $pendingTasks = array_filter($tasks, function ($task) {
     return !$task['completed'];
 });
 
-dd($pendingTasks);
+echo "<h1>Mis tareas</h1>";
 
-require 'index.view.php';
+echo "<h2>Completas</h2>";
+foreach ($completedTasks as $task) {
+    echo $task['title'] . " ✅<br>";
+}
+
+echo "<h2>Pendientes</h2>";
+foreach ($pendingTasks as $task) {
+    echo $task['title'] .  " ❌<br>";
+}
