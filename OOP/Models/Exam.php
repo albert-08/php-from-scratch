@@ -2,20 +2,14 @@
 
 require_once "Model.php";
 
-class Task extends Model
+class Exam extends Model
 {
-    public $color = 'black';
-
     // Constructor Property Promotion (PHP 8.0+)
     public function __construct(
-        public $title, 
+        public $topic,
+        public $info,
         public $completed = false
     )
     {
-    }
-
-    public function setColor($color)
-    {
-        $this->color = $color;
     }
 }
