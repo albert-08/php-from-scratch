@@ -4,6 +4,7 @@ require_once "Model.php";
 
 class Task extends Model
 {
+    public $id;
     public $color = 'black';
 
     // Constructor Property Promotion (PHP 8.0+)
