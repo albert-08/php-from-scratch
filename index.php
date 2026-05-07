@@ -1,31 +1,21 @@
 <?php
-require 'funciones.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$greeting = "Hola mundo";
+require 'Models/Task.php';
+$query = require 'bootstrap.php';
 
-$tasks = [
-    [
-        'title' => 'Estudiar PHP',
-        'completed' => true
-    ],
-    [
-        'title' => 'Aprender Laravel',
-        'completed' => false
-    ],
-    [
-        'title' => 'Crear un proyecto con Laravel',
-        'completed' => false
-    ]
-];
+$greeting = 'Hola mundo';
+
+$tasks = $query->selectAll('tasks', 'Task');
 
 $completedTasks = array_filter($tasks, function ($task) {
-    return $task['completed'];
+    return $task->completed;
 });
 
 $pendingTasks = array_filter($tasks, function ($task) {
-    return !$task['completed'];
+    return !$task->completed;
 });
-
-dd($pendingTasks);
 
 require 'index.view.php';
