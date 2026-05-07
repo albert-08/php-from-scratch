@@ -2,10 +2,14 @@
 
 class Connection
 {
-    public static function start()
+    public static function start($config)
     {
         try {
-            $pdo = new PDO('mysql:host=127.0.0.1;dbname=todos', 'root', '');
+            $pdo = new PDO(
+                "{$config['type']}:host={$config['host']};dbname={$config['database']}",
+                $config['user'],
+                $config['password']
+            );
 
             return $pdo;
         } catch (PDOException $error) {
